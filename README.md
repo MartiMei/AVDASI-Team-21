@@ -17,23 +17,24 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 ### Ideas
 -
 ### Previous Versions
--v8.1
--v8.0
--v7.5
--v7.4.2
--v7.4.1
--v7.4
--v7.2.1
--v7.2
--v6.4
--v6.3
--v5.1
--v3
--v2
+-v8.1:
+-v8.0:
+-v7.5:
+-v7.4.2:
+-v7.4.1:
+-v7.4:
+-v7.2.1:
+-v7.2:
+-v6.4:
+-v6.3:
+-v5.1:
+-v3:
+-v2:
 
 ### Contributions to the code
 
 -MM:
+
 -SS:
 
 
