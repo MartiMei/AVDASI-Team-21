@@ -40,7 +40,7 @@ def cmd_logging(action, **kwargs):  #what;how(keyword argument)
 # -----------------------------
 # MAVLink connection
 # -----------------------------
-"""
+
 connection_string = "udp:0.0.0.0:14550"
 master = mavutil.mavlink_connection(connection_string)
 master.wait_heartbeat()
@@ -63,7 +63,7 @@ master.mav.command_long_send(
     21196,  # special ArduPilot code = disable safety
     0, 0, 0, 0, 0, 0
 )
-"""
+
 global python_control
 python_control = True
 # Track last commanded servo positions
@@ -136,15 +136,12 @@ def centre_sliders():
 
 def update_elevator(value):
     set_servo(2, float(value))
-    elevator_value.set(f"PWM: {int(float(value))}")
 
 def update_rudder(value):
     set_servo(1, float(value))
-    rudder_value.set(f"PWM: {int(float(value))}")
 
 def update_aileron(value):
     set_servo(4, float(value))
-    aileron_value.set(f"PWM: {int(float(value))}")
 
 def toggle_recording():
     global recording
@@ -194,10 +191,6 @@ def set_servo_angle():
     pwm_rudder = int(center_pwm + (angle_rudder / 90) * (2100 - center_pwm))
     set_servo(4, pwm_rudder)
     rudder.set(pwm_rudder)
-
-    rudder_value.set(f"PWM: {pwm_rudder}")
-    elevator_value.set(f"PWM: {pwm_elevator}")
-    aileron_value.set(f"PWM: {pwm_aileron}")
 
     cmd_logging(
     "SET_SERVO_ANGLE",
@@ -407,7 +400,6 @@ def mavlink_thread():
 
             if name == "POT_VOLT":
                 pot_voltage = msg.value
-                print(f"[POT] Voltage: {pot_voltage:.3f} V")
 
             timestamp = time.time() - start_time
             airspeed_data.append(pot_voltage)
@@ -456,7 +448,6 @@ def mavlink_thread():
                     else:
                         last_flap_pwm=flap_pwm
                     flap_pwm = max(1000, min(2000, flap_pwm))
-                    print(flap_pwm)  #just for reference
                     # Send command directly to AUX2 servo
                     master.mav.command_long_send(
                         master.target_system,
@@ -1085,18 +1076,6 @@ def update_plot():
         t_min = max(0, t_max - time_window)
         ax.set_xlim(t_min, t_max)
         canvas.draw_idle()
-
-        # --- Control response plots (moving points) ---
-        if not python_control:
-            point_elev.set_data([servo2_pwm], [pitch_data[-1] if pitch_data else 0])
-            point_ail.set_data([servo1_pwm], [roll_data[-1] if roll_data else 0])
-            point_rud.set_data([servo4_pwm], [yaw_data[-1] if yaw_data else 0])
-        else:
-            point_elev.set_data([elevator.get()], [pitch_data[-1] if pitch_data else 0])
-            point_ail.set_data([aileron.get()], [roll_data[-1] if roll_data else 0])
-            point_rud.set_data([rudder.get()], [yaw_data[-1] if yaw_data else 0])
-
-        canvas2.draw_idle()
 
     if len(airspeed_data) > 2:
         line_airspeed.set_data(list(airspeed_time), list(airspeed_data))
