@@ -18,21 +18,17 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 ### Ideas
 - Add cmd logging for sensor part
 ### Previous Versions
--v9.0:
+-v9.0:cmd logging， bug fix, redundancy
 
--v8.1:  
+-v8.1:  bug fix
 
--v8.0:  
+-v8.0: pitch rate, plot of PWM vs time, csv logging of flight
 
--v7.5:
+-v7.5:Fix bugs, csv output
 
--v7.4.2:
+-v7.4:Intergrate with lua script
 
--v7.4.1:
-
--v7.4:
-
--v7.2.1:
+-v7.2.1: Senser plot lagging solved
 
 -v7.2:Max/min servo test, potentialmeter plot
 
