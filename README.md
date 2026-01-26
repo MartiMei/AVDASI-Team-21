@@ -7,9 +7,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ## Roadmap
 
-### Current Version (v9.4)
-- New functions: update to allow 2 servos to rotate simultaneously for elevator, and 2 servos to rotate simultaneously for the flap
-- 
+### Current Version (v9.5)
+- Minor changes
 
 ### Upcoming (v10)
 - New functions: Set Zero for base data, bright/dark mode
@@ -18,6 +17,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 ### Ideas
 - Add cmd logging for sensor part
 ### Previous Versions
+
+-v9.4: New functions: update to allow 2 servos to rotate simultaneously for elevator, and 2 servos to rotate simultaneously for the flap
 
 -v9.3: UI updates: Rearrange base on new design, Safety Lock Button added (UI test purposes only), 
 
