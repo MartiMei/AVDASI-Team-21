@@ -7,16 +7,19 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ## Roadmap
 
-### Current Version (v9.5)
-- Minor changes
+### Current Version (v10)
+- Live plots removed to reduce the risk of lag in the program
+- Live data shown instead - no lag
+- All plotting will be done after wind tunnel test
 
-### Upcoming (v10)
-- New functions: Set Zero for base data, bright/dark mode
-- UI updates: Cross-like slides, 3D Altitude model update
-- 
+
 ### Ideas
 - Add cmd logging for sensor part
 ### Previous Versions
+
+- v9.7: Functionality with updated Lua code - data logging done directly to SD Card on the Cube at 20Hz
+
+-v9.5: Minor changes
 
 -v9.4: New functions: update to allow 2 servos to rotate simultaneously for elevator, and 2 servos to rotate simultaneously for the flap
 
