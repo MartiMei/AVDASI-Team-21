@@ -14,10 +14,14 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 
 ### Ideas
-- Add cmd logging for sensor part
+- Add cmd logging for sensor part(Done)
+- UI improvement(Done partly)
+- 3D plot improvement(Done partly, might add moveable componet animation in future)
+- Delay Reduce(Done partly)
 ### Previous Versions
+-v9.8: 3D plots improvement: form 3 basic lines to a basic modeled plane shape, add axes of pitch/yaw/row. Might need to change the view to suit wind tunnel testing sequece.
 
-- v9.7: Functionality with updated Lua code - data logging done directly to SD Card on the Cube at 20Hz
+-v9.7: Functionality with updated Lua code - data logging done directly to SD Card on the Cube at 20Hz
 
 -v9.5: Minor changes
 
