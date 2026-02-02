@@ -7,10 +7,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ## Roadmap
 
-### Current Version (v10)
-- Live plots removed to reduce the risk of lag in the program
-- Live data shown instead - no lag
-- All plotting will be done after wind tunnel test
+### Current Version (v10.1)
+- Minor changes
 
 
 ### Ideas
@@ -18,7 +16,10 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - UI improvement(Done partly)
 - 3D plot improvement(Done partly, might add moveable componet animation in future)
 - Delay Reduce(Done partly)
+- 
 ### Previous Versions
+v10: Live plots removed to reduce the risk of lag in the program - Live data shown instead;no lag. All plotting will be done after wind tunnel test.
+
 -v9.8: 3D plots improvement: form 3 basic lines to a basic modeled plane shape, add axes of pitch/yaw/row. Might need to change the view to suit wind tunnel testing sequece.
 
 -v9.7: Functionality with updated Lua code - data logging done directly to SD Card on the Cube at 20Hz
