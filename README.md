@@ -16,7 +16,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - UI improvement(Done partly)
 - 3D plot improvement(Done partly, might add moveable componet animation in future)
 - Delay Reduce(Done partly)
-- 
+- Auto download of csv log from MP after flight by lua
+- Frame addition to left, stop UI stretching everytime number changes
 ### Previous Versions
 v10: Live plots removed to reduce the risk of lag in the program - Live data shown instead;no lag. All plotting will be done after wind tunnel test.
 
