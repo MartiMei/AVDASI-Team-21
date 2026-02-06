@@ -7,8 +7,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ## Roadmap
 
-### Current Version (v10.1)
-- Minor changes
+### Current Version (v10.2)
+- UI update
 
 
 ### Ideas
@@ -19,7 +19,9 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - Auto download of csv log from MP after flight by lua
 - Frame addition to left, stop UI stretching everytime number changes
 ### Previous Versions
-v10: Live plots removed to reduce the risk of lag in the program - Live data shown instead;no lag. All plotting will be done after wind tunnel test.
+- v10.1: Minor changes
+
+- v10: Live plots removed to reduce the risk of lag in the program - Live data shown instead;no lag. All plotting will be done after wind tunnel test.
 
 -v9.8: 3D plots improvement: form 3 basic lines to a basic modeled plane shape, add axes of pitch/yaw/row. Might need to change the view to suit wind tunnel testing sequece.
 
