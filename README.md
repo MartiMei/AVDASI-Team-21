@@ -7,8 +7,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ## Roadmap
 
-### Current Version (v10.2)
-- UI update
+### Current Version (v11)
+- Add safety lock for two modes, while keeping each mode isolated(the dependacy and function itself still needs multiple test), the safety lock button supporst color change when status changes.
 
 
 ### Ideas
@@ -19,6 +19,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - Auto download of csv log from MP after flight by lua
 - Frame addition to left, stop UI stretching everytime number changes
 ### Previous Versions
+- v10.2: UI update
+
 - v10.1: Minor changes
 
 - v10: Live plots removed to reduce the risk of lag in the program - Live data shown instead;no lag. All plotting will be done after wind tunnel test.
