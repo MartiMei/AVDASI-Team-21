@@ -7,8 +7,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ## Roadmap
 
-### Current Version (v11)
-- Add safety lock for two modes, while keeping each mode isolated(the dependacy and function itself still needs multiple test), the safety lock button supporst color change when status changes.
+### Current Version (v11.1)
+- Fixed problem: the previous version(v11) works because of the previous test code setup of toggling safety switch, the code it self still need that toggle, this version solves the probelm
 
 
 ### Ideas
@@ -19,6 +19,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - Auto download of csv log from MP after flight by lua
 - Frame addition to left, stop UI stretching everytime number changes
 ### Previous Versions
+- v11: Add safety lock for two modes, while keeping each mode isolated(the dependacy and function itself still needs multiple test), the safety lock button supporst color change when status changes.
+
 - v10.2: UI update
 
 - v10.1: Minor changes
