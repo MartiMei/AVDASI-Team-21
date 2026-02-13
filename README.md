@@ -19,6 +19,7 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - Auto download of csv log from MP after flight by lua
 - Frame addition to left, stop UI stretching everytime number changes
 - Add flap angle input
+- Add editable flap angle presets,to match up with three mode change on RC
 ### Previous Versions
 - v11: Add safety lock for two modes, while keeping each mode isolated(the dependacy and function itself still needs multiple test), the safety lock button supporst color change when status changes.
 
