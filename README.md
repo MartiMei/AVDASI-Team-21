@@ -15,9 +15,10 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - Add cmd logging for sensor part(Done)
 - UI improvement(Done partly)
 - 3D plot improvement(Done partly, might add moveable componet animation in future)
-- Delay Reduce(Done partly)
+- Delay Reduce(Done)
 - Auto download of csv log from MP after flight by lua
 - Frame addition to left, stop UI stretching everytime number changes
+- Add flap angle input
 ### Previous Versions
 - v11: Add safety lock for two modes, while keeping each mode isolated(the dependacy and function itself still needs multiple test), the safety lock button supporst color change when status changes.
 
