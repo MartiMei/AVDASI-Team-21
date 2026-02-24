@@ -102,13 +102,13 @@ def toggle_arming_switch(mav, arm):
 # -----------------------------
 # MAVLink connection
 # -----------------------------
-"""
+
 #WIFI Connection
 connection_string = "udp:0.0.0.0:14550"
 master = mavutil.mavlink_connection(connection_string)
 master.wait_heartbeat()
 time.sleep(1.5)
-"""
+
 """
 #USB Connection
 connection_string = "COM4"   # <-- change to your actual COM port
@@ -117,15 +117,15 @@ baud = 115200
 master = mavutil.mavlink_connection(connection_string, baud=baud)
 """
 
-"""
+
 toggle_arming_switch(master, arm=False)
 toggle_safety_switch(master, enable=True)
-"""
+
 safety_enabled = True
 python_control = False
 override_active = False
 
-"""
+
 master.mav.rc_channels_override_send(
     master.target_system,
     master.target_component,
@@ -136,17 +136,17 @@ cmd_logging(
     system_id=master.target_system,
     component_id=master.target_component
 )
-"""
+
 """
 cmd_logging(
     "MAVLINK_CONNECTED (USB)",
     system_id=master.target_system,
     component_id=master.target_component
 )
-
+"""
 
 print(f"Heartbeat from system {master.target_system}, component {master.target_component}")
-"""
+
 # Track last commanded servo positions
 servo_pwm = {
     1: 1495,  # Aileron 1
