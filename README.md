@@ -7,8 +7,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ## Roadmap
 
-### Current Version (v11.1)
-- v12: The flap control is reprogrammed to be controlled on the UI, rather than on the remote control, so custom angle inputs can be made, satisfying F&A teams wants for aerodynamic data.
+### Current Version (final plus pro max ultra mega signature SE turbo hyper lite prime prestige ultimate)
+- The final version of wind tunnel testing, have added emergency control, advanced 3d live status, and direct flight log saving.
 
 
 ### Ideas
@@ -21,6 +21,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - Add flap angle input
 - Add editable flap angle presets,to match up with three mode change on RC
 ### Previous Versions
+- v12: The flap control is reprogrammed to be controlled on the UI, rather than on the remote control, so custom angle inputs can be made, satisfying F&A teams wants for aerodynamic data.
+
 - v11.1: Fixed problem: the previous version(v11) works because of the previous test code setup of toggling safety switch, the code it self still need that toggle, this version solves the problem
 
 - v11: Add safety lock for two modes, while keeping each mode isolated(the dependacy and function itself still needs multiple test), the safety lock button supporst color change when status changes.
