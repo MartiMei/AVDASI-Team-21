@@ -13,13 +13,13 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ### Ideas
 - Add cmd logging for sensor part(Done)
-- UI improvement(Done partly)
-- 3D plot improvement(Done partly, might add moveable componet animation in future)
+- UI improvement(Done)
+- 3D plot improvement(Done)
 - Delay Reduce(Done)
-- Auto download of csv log from MP after flight by lua
-- Frame addition to left, stop UI stretching everytime number changes
-- Add flap angle input
-- Add editable flap angle presets,to match up with three mode change on RC
+- Auto download of csv log from MP after flight by lua(Done)
+- Frame addition to left, stop UI stretching everytime number changes(Done?)
+- Add flap angle input(Done)
+- Add editable flap angle presets,to match up with three mode change on RC(Done)
 ### Previous Versions
 - v12: The flap control is reprogrammed to be controlled on the UI, rather than on the remote control, so custom angle inputs can be made, satisfying F&A teams wants for aerodynamic data.
 
