@@ -211,6 +211,14 @@ def save_flap_pwm(pwm_tuple):
 recording = False
 exit_program = False
 
+emergency_ch1 = 1500
+emergency_ch2 = 1500
+emergency_ch3 = 1500
+emergency_ch4 = 1500
+emergency_ch5 = 1500
+emergency_a3  = 1500
+emergency_a5  = 1500
+
 def enable_emergency():
     global emergency
     emergency=1
@@ -326,39 +334,54 @@ def set_servo_angle():
         rudder_deg=angle_rudder)
 
     elif emergency==1:
+        global emergency_ch1, emergency_ch2, emergency_ch3, emergency_ch4, emergency_ch5, emergency_a3, emergency_a5
         
+        emergency_ch1 = int(m1.get())
+        emergency_ch2 = int(m2.get())
+        emergency_ch3 = int(m3.get())
+        emergency_ch4 = int(m4.get())
+        emergency_ch5 = int(m5.get())
+        emergency_a3  = int(a3.get())
+        emergency_a5  = int(a5.get())
+
         master.mav.rc_channels_override_send(
             master.target_system,
             master.target_component,
-            int(m1.get()),
-            int(m2.get()),
-            int(m3.get()),
-            int(m4.get()),
-            int(m5.get()), 0, 0, 0
+            emergency_ch1, 
+            emergency_ch2, 
+            emergency_ch3,
+            emergency_ch4, 
+            emergency_ch5, 
+            0, 0, 0
         )
-
         master.mav.command_long_send(
-            master.target_system,
+            master.target_system, 
             master.target_component,
-            mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
+            mavutil.mavlink.MAV_CMD_DO_SET_SERVO, 
             0,
-            11,   #AUX OUT 3
-            int(a3.get()),
-            0, 0, 0, 0, 0)
-
+            11, 
+            emergency_a3, 0, 0, 0, 0, 0)
         master.mav.command_long_send(
-            master.target_system,
+            master.target_system, 
             master.target_component,
-            mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
+            mavutil.mavlink.MAV_CMD_DO_SET_SERVO, 
             0,
-            13,   #AUX OUT 5
-            int(a5.get()),
-            0, 0, 0, 0, 0)
+            13, 
+            emergency_a5, 0, 0, 0, 0, 0)
 
-        last_flap_pwm = (int(a3.get()), int(a5.get()))
+        last_flap_pwm = (emergency_a3, emergency_a5)
 
         cmd_logging(
-        "EMERGENCY_SET_PWM")
+            "EMERGENCY_SET_PWM",
+            ch1=emergency_ch1,
+            ch2=emergency_ch2,
+            ch3=emergency_ch3,
+            ch4=emergency_ch4,
+            ch5=emergency_ch5,
+            aux3=emergency_a3,
+            aux5=emergency_a5
+        )
+
             
 
 
@@ -434,17 +457,20 @@ def set_custom_flap():
 #Defining variables to store flight parameters
 #-----------------------
 
-time_data = deque(maxlen=300)
-pitch_data = deque(maxlen=300)
-start_time = time.time()
+attitude_log = deque(maxlen=6000)    #timestamp, pitch, roll, yaw, pitch_rate
+servo_log    = deque(maxlen=6000)    #timestamp, servo1, servo2, servo4
+sensor_log   = deque(maxlen=6000)    #timestamp, pot_voltage
 
+time_data     = deque(maxlen=300)
+pitch_data    = deque(maxlen=300)
+roll_data     = deque(maxlen=300)
+yaw_data      = deque(maxlen=300)
+pitchrate_data= deque(maxlen=300)
 airspeed_data = deque(maxlen=300)
-airspeed_time = deque(maxlen=300)
-
-servo1_data = deque(maxlen=300)
-servo2_data = deque(maxlen=300)
-servo4_data = deque(maxlen=300)
-servo_time = deque(maxlen=300)
+servo1_data   = deque(maxlen=300)
+servo2_data   = deque(maxlen=300)
+servo4_data   = deque(maxlen=300)
+start_time    = time.time()
 
 # -----------------------------
 # MAVLink reading - reads data from the Cube
@@ -453,7 +479,8 @@ servo_time = deque(maxlen=300)
 def mavlink_thread():
     global recording, exit_program, python_control, yaw_offset,flap_pwm,flap_ontarget,airspeed,last_flap_mode
     global last_flap_pwm, sensor_data,flap_switch_value,pot_voltage,servo1_pwm, servo2_pwm, servo4_pwm,armed_state,safety_enabled,override_active
-    yaw = roll = pitch = airspeed = 0.0
+    
+    yaw = roll = pitch = airspeed = pitch_rate = 0.0
     yaw_offset = None
 
     # --- RC switch setup ---
@@ -482,13 +509,18 @@ def mavlink_thread():
         while not exit_program:
             try:
                 if emergency == 1:
-                    pass
+                    master.mav.rc_channels_override_send(
+                        master.target_system,
+                        master.target_component,
+                        emergency_ch1, emergency_ch2, emergency_ch3,
+                        emergency_ch4, emergency_ch5, 0, 0, 0
+                    )
                 elif python_control and not safety_enabled:
                     ch1 = int(aileron.get())
-                    ch2 = int(elevator.get()) - 120        # CH2 trim偏移(1500-1380=120)
-                    ch3 = 2990 - int(aileron.get())        # CH3反向：中立时=2990-1495=1495 ✅
+                    ch2 = int(elevator.get()) - 120        
+                    ch3 = 2990 - int(aileron.get())        
                     ch4 = int(rudder.get())
-                    ch5 = 3100 - int(elevator.get())       # CH5反向：中立时=3100-1495=1605≈1600 ✅
+                    ch5 = 3100 - int(elevator.get())       
                     
                     master.mav.rc_channels_override_send(
                         master.target_system,
@@ -523,22 +555,6 @@ def mavlink_thread():
         if not msg:
             continue
         
-        # --- Store flight parameters in arrays ---
-        if recording:
-            timestamp = datetime.now().strftime("%H:%M:%S.%f")[:-3]
-            
-            t = time.time() - start_time
-            time_data.append(t)
-            pitch_data.append(pitch)
-            roll_data.append(roll)
-            yaw_data.append(yaw)
-            pitchrate_data.append(pitch_rate)
-            airspeed_data.append(pot_voltage)
-
-            servo1_data.append(servo1_pwm)
-            servo2_data.append(servo2_pwm)
-            servo4_data.append(servo4_pwm)
-
         # --- Recieving Heartbeat message --- 
         if msg.get_type() == "HEARTBEAT":
             armed_state = bool(
@@ -563,8 +579,17 @@ def mavlink_thread():
             elif yaw < -180:
                 yaw += 360
             
-            # Update attitude label in UI, to 1 decimal place
+            #Update attitude label in UI, to 1 decimal place
             attitude_text.set(f"Pitch: {pitch:.1f} ° | Roll: {roll:.1f}° | Yaw: {yaw:.1f}")
+            if recording:
+                t = time.time() - start_time
+                attitude_log.append((t, pitch, roll, yaw, pitch_rate))
+
+                time_data.append(t)
+                pitch_data.append(pitch)
+                roll_data.append(roll)
+                yaw_data.append(yaw)
+                pitchrate_data.append(pitch_rate)
 
         
         # --- Handle RC input (for control switch, Python/RC) ---
@@ -648,6 +673,13 @@ def mavlink_thread():
             #CHANGE THIS TO ANGLE!!! (NOT PWM)
             #CALIBRATION TABLE!
 
+            if recording:
+                t = time.time() - start_time
+                servo_log.append((t, servo1_pwm, servo2_pwm, servo4_pwm))
+                servo1_data.append(servo1_pwm)
+                servo2_data.append(servo2_pwm)
+                servo4_data.append(servo4_pwm)
+
             
         # --- Recieving the current volatge of the potentiometer ---
         elif msg.get_type() == "NAMED_VALUE_FLOAT":
@@ -663,6 +695,11 @@ def mavlink_thread():
                 voltage_text.set(f"Flap angle: {pot_voltage:.2f}V")
                 #CHANGE THIS TO ANGLE
                 #CALIBRATION TABLE!
+
+                if recording:
+                    t = time.time() - start_time
+                    sensor_log.append((t, pot_voltage))
+                    airspeed_data.append(pot_voltage)
 
             # --- Flap control ---
             
@@ -782,24 +819,56 @@ def quit_program():
 
     #direct save csv instead of download in mp
     try:
-        if len(time_data) > 0:
+        if len(attitude_log) > 0 or len(servo_log) > 0 or len(sensor_log) > 0:
             timestamp_str = datetime.now().strftime("%Y%m%d_%H%M%S")
-            csv_filename = f"flight_log_{timestamp_str}.csv"
+            csv_filename  = f"flight_log_{timestamp_str}.csv"
+
+            att_list    = list(attitude_log)   #t, pitch, roll, yaw, pitch_rate
+            servo_list  = list(servo_log)      #t, s1, s2, s4
+            sensor_list = list(sensor_log)     #t, pot_voltage
+
+            #gather time
+            all_times = sorted(set(
+                [r[0] for r in att_list] +
+                [r[0] for r in servo_list] +
+                [r[0] for r in sensor_list]
+            ))
+
+            att_map    = {r[0]: r[1:] for r in att_list}
+            servo_map  = {r[0]: r[1:] for r in servo_list}
+            sensor_map = {r[0]: r[1:] for r in sensor_list}
+
             with open(csv_filename, "w", newline="") as csvfile:
                 writer = csv.writer(csvfile)
-
                 writer.writerow([
-                    "time", "pitch", "roll", "yaw", "pitch_rate",
-                    "airspeed", "servo1_pwm", "servo2_pwm", "servo4_pwm"
+                    "time_s",
+                    "pitch_deg", "roll_deg", "yaw_deg", "pitch_rate_dps",
+                    "servo1_pwm", "servo2_pwm", "servo4_pwm",
+                    "pot_voltage_V"
                 ])
 
-                for row in zip(
-                    time_data, pitch_data, roll_data, yaw_data, pitchrate_data,
-                    airspeed_data, servo1_data, servo2_data, servo4_data
-                ):
-                    writer.writerow(row)
+                #forward fill
+                last_att    = ("", "", "", "")
+                last_servo  = ("", "", "")
+                last_sensor = ("",)
+
+                for t in all_times:
+                    if t in att_map:
+                        last_att = tuple(f"{v:.4f}" for v in att_map[t])
+                    if t in servo_map:
+                        last_servo = servo_map[t]   #pwm is int
+                    if t in sensor_map:
+                        last_sensor = tuple(f"{v:.4f}" for v in sensor_map[t])
+
+                    writer.writerow([
+                        f"{t:.4f}",
+                        *last_att,
+                        *last_servo,
+                        *last_sensor
+                    ])
+
             print(f"[INFO] CSV saved: {csv_filename}")
-            cmd_logging("CSV_SAVED", filename=csv_filename, rows=len(time_data))
+            cmd_logging("CSV_SAVED", filename=csv_filename, rows=len(all_times))
         else:
             print("[INFO] No data to save.")
             cmd_logging("CSV_SKIPPED", reason="no_data")
@@ -1369,15 +1438,6 @@ ax3.text(0, arrow_len, 0, 'Pitch-axis', color='c')
 ax3.text(0, 0, arrow_len, 'Yaw-axis', color='c')
 
 
-
-
-# Create buffers for data
-time_data = deque(maxlen=300)
-pitch_data = deque(maxlen=300)
-roll_data = deque(maxlen=300)
-yaw_data = deque(maxlen=300)
-pitchrate_data = deque(maxlen=300)
-start_time = time.time()
 
 # Scrolling window length (seconds)m
 
