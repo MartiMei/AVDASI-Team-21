@@ -116,7 +116,7 @@ connection_string = "COM4"   # <-- change to your actual COM port
 baud = 115200
 
 master = mavutil.mavlink_connection(connection_string, baud=baud)
-
+time.sleep(1.5)
 """
 
 
@@ -605,7 +605,7 @@ def mavlink_thread():
                         #CREATE EQUATION FOR FLAP DEFLCTION
                         flap_mode = "CUSTOM"
                         entered_flap_angle = float(flap_angle_entry.get())
-                        flap_target_voltage = -0.0156*entered_flap_angle + 1.48
+                        flap_target_voltage = round(-0.0156*entered_flap_angle + 1.48,2)
 
                     #Redundancy code to prevent errors
                     if flap_target_voltage==0:
