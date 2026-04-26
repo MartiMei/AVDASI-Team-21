@@ -20,9 +20,9 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - Add flap angle input(Done)
 - Add editable flap angle presets,to match up with three mode change on RC(Done)
 ### Previous Versions
--The true wind tunnel tesing scripts for(EMPENNAGE, PORT, STARTBOARD, See full version name in release): Removed 3d plot becuase it caused computer crash with one of the developers, advanced and accurate calibration under lines of best fit analysis. However, due to mechanical design problems, inaccurate in angle and cannot stable positioned in high wind speed.
+- The true wind tunnel tesing scripts for(EMPENNAGE, PORT, STARTBOARD, See full version name in release): Removed 3d plot becuase it caused computer crash with one of the developers, advanced and accurate calibration under lines of best fit analysis. However, due to mechanical design problems, inaccurate in angle and cannot stable positioned in high wind speed.
 
--final plus pro max ultra mega signature SE turbo hyper lite prime prestige ultimate version: The ideal final script with calibrations, ready for wind tunnel testng. Have added emergency control, advanced 3d live status, and direct flight log saving.
+- final plus pro max ultra mega signature SE turbo hyper lite prime prestige ultimate version: The ideal final script with calibrations, ready for wind tunnel testng. Have added emergency control, advanced 3d live status, and direct flight log saving.
 
 - v12: The flap control is reprogrammed to be controlled on the UI, rather than on the remote control, so custom angle inputs can be made, satisfying F&A teams wants for aerodynamic data.
 
