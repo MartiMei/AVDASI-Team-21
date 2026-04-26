@@ -24,6 +24,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 - final plus pro max ultra mega signature SE turbo hyper lite prime prestige ultimate version: The ideal final script with calibrations, ready for wind tunnel testng. Have added emergency control, advanced 3d live status, and direct flight log saving.
 
+- //Multiple unstable versions were uploaded because lack of time to fully test, while they have functional bugs or running problems that didn't have time to fix, they were kept for working evidence.
+
 - v12: The flap control is reprogrammed to be controlled on the UI, rather than on the remote control, so custom angle inputs can be made, satisfying F&A teams wants for aerodynamic data.
 
 - v11.1: Fixed problem: the previous version(v11) works because of the previous test code setup of toggling safety switch, the code it self still need that toggle, this version solves the problem
