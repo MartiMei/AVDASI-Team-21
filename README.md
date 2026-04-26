@@ -5,10 +5,16 @@ This is team 21's avionic script's github page, we focus on creating the two-end
 ## Requirements
 See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shared%20Documents/Forms/AllItems.aspx?id=%2Fteams%2FUnitTeams%2DCADE20005%2D2025%2D26%2DTB%2D4%2DA%2FShared%20Documents%2FGeneral%2F2025%20AVDASI2%20Requirements%20Specification%2Epdf&parent=%2Fteams%2FUnitTeams%2DCADE20005%2D2025%2D26%2DTB%2D4%2DA%2FShared%20Documents%2FGeneral
 
+## Rules
+1. Each upload version requires fully tested scripts on one of the developers' pc, the rest should test the script after upload. (Rule breaked during final weeks before wind tunnel).
+2. Each functional updates had to name from last version number add one, while minor changes or fixes add the sub version number. (Final versions excepted).
+3. After all major functions added, each multi-pc fully tested version had a release.
+4. For each version upload or release, need to write brief note for memorizing.
+
 ## Roadmap
 
-### Current Version (Wind Tunnel Version)
-- The stablized versions used in win tunnel testing, based on the testing experience, add auto renaming and low lagging python data saving(in wind tunnel we used SD card) in future.
+### Current Version (Avionics final plus pro max ultra mega signature SE turbo hyper lite prime prestige ultimate windtunnel solution with 3d)
+- The AFPPMUMSSTHLPPUWSW3 version was the wind tunnel version with 3d plot add-on. The assumed final script, while not tested since no cube orange plus available. No release under this update
 
 ### Ideas
 - Add cmd logging for sensor part(Done)
@@ -20,7 +26,7 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 - Add flap angle input(Done)
 - Add editable flap angle presets,to match up with three mode change on RC(Done)
 ### Previous Versions
-- The true wind tunnel tesing scripts for(EMPENNAGE, PORT, STARTBOARD, See full version name in release): Removed 3d plot becuase it caused computer crash with one of the developers, advanced and accurate calibration under lines of best fit analysis. However, due to mechanical design problems, inaccurate in angle and cannot stable positioned in high wind speed.
+- The real wind tunnel tesing scripts for(EMPENNAGE, PORT, STARTBOARD, See full version name in release): Removed 3d plot becuase it caused computer crash with one of the developers, advanced and accurate calibration under lines of best fit analysis. However, due to mechanical design problems, inaccurate in angle and cannot stable positioned in high wind speed.
 
 - final plus pro max ultra mega signature SE turbo hyper lite prime prestige ultimate version: The ideal final script with calibrations, ready for wind tunnel testng. Have added emergency control, advanced 3d live status, and direct flight log saving.
 
