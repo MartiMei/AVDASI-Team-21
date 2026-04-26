@@ -7,8 +7,8 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 
 ## Roadmap
 
-### Current Version ()
-- The final version of 
+### Current Version (Wind Tunnel Version)
+- The stablized versions used in win tunnel testing, based on the testing experience, add auto renaming and low lagging python data saving(in wind tunnel we used SD card) in future.
 
 ### Ideas
 - Add cmd logging for sensor part(Done)
