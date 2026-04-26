@@ -8,8 +8,9 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 ## Rules
 1. Each upload version requires fully tested scripts on one of the developers' pc, the rest should test the script after upload. (Rule breaked during final weeks before wind tunnel).
 2. Each functional updates had to name from last version number add one, while minor changes or fixes add the sub version number. (Final versions excepted).
-3. After all major functions added, each multi-pc fully tested version had a release.
-4. For each version upload or release, need to write brief note for memorizing.
+3. After all major functions added, each functional update version with all developer's pc fully tested need a release.
+4. The application of script(i.e: report/ppt writing, calibration, testing with implementation, etc.) needs to use the newest release version.
+5. For each version upload or release, need to write brief note for memorizing.
 
 ## Roadmap
 
