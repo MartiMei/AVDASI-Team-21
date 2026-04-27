@@ -22,7 +22,7 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 ## Roadmap
 
 ### Current Version (Avionics final plus pro max ultra mega signature SE turbo hyper lite prime prestige ultimate windtunnel solution with 3d)
-- The AFPPMUMSSTHLPPUWSW3 version was the wind tunnel version with 3d plot add-on. The assumed final script, while not tested since no cube orange plus available. No release under this update
+- The AFPPMUMSSTHLPPUWSW3 version was the wind tunnel version with 3d plot add-on. The assumed final script, while not tested since no cube orange plus available. No release under this update. A runnable package with all other files was provided.
 
 ### Ideas
 - Add cmd logging for sensor part(Done)
