@@ -12,6 +12,13 @@ See in: https://uob.sharepoint.com/teams/UnitTeams-CADE20005-2025-26-TB-4-A/Shar
 4. The application of script(i.e: report/ppt writing, calibration, testing with implementation, etc.) needs to use the newest release version.
 5. For each version upload or release, need to write brief note for memorizing.
 
+## Running Setup
+- script, cmd_log.txt,flap_position.txt,logo.jpg need to be in the same folder
+- lua script need to be loaded onto cube orange plus through misson planner
+- if the running enviroment was in Users\ folder of Windows OS, the other files(all folder files mentioned except teh script) need to be in the Users\ layer for being recognized
+- For running, connect the cube wifi and run the script
+- Click Quit button when want to close the script, so that last flap pwm could be saved
+
 ## Roadmap
 
 ### Current Version (Avionics final plus pro max ultra mega signature SE turbo hyper lite prime prestige ultimate windtunnel solution with 3d)
